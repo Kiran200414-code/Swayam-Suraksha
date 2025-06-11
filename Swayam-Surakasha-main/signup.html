@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swayam Suraksha - Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+     body, html {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('Background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      height: 100%;
+      margin: 0;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      min-height: 100vh;
+      padding-top: 70px;
+    }
+
+    .navbar {
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+
+    .btn-success {
+      background-color: #4CAF50;
+      border-radius: 50px;
+    }
+
+    .btn-outline-success {
+      color: #4CAF50;
+      border-color: #4CAF50;
+      border-radius: 50px;
+    }
+
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border: none;
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+
+    .form-control, .form-select {
+      border-radius: 8px;
+    }
+
+    .toggle-link {
+      color: #4CAF50;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .password-hint {
+      font-size: 0.8rem;
+      color: #6c757d;
+      margin-top: 0.25rem;
+    }
+ .verification-modal .modal-header {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="main-logo.png" alt="Logo" class="brand-logo">
+      <div class="brand-text ms-2">
+        <strong>Swayam</strong><br>
+        <span>Suraksha</span>
+      </div>
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-medium text-danger" href="#" data-bs-toggle="dropdown">Emergency</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="tel:100">Police - 100</a></li>
+            <li><a class="dropdown-item" href="tel:102">Ambulance - 102</a></li>
+            <li><a class="dropdown-item" href="tel:101">Fire Service - 101</a></li>
+            <li><a class="dropdown-item" href="tel:1091">Women's Helpline - 1091</a></li>
+            <li><a class="dropdown-item" href="tel:108">Disaster Management - 108</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav><div class="overlay">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card mb-4">
+          <div class="card-header text-center bg-white border-0 pt-4">
+            <h2 class="card-title">Create Account</h2>
+          </div>
+          <div class="card-body p-4">
+            <form id="formSignup">
+              <div class="mb-3">
+                <label for="signupUserType" class="form-label">Register as:</label>
+                <select class="form-select" id="signupUserType" required>
+                  <option value="" disabled selected>Select...</option>
+                  <option value="citizen">Citizen</option>
+                  <option value="police">Police Officer</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="signupEmail" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="signupEmail" required>
+              </div>
+              <div class="mb-3">
+                <label for="signupPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signupPassword" required minlength="6">
+                <div class="password-hint">Password must be at least 6 characters</div>
+              </div>
+
+              <!-- Police-specific fields -->
+              <div class="mb-3 d-none" id="policeFields">
+                <label for="signupPoliceStation" class="form-label">Police Station</label>
+                <input type="text" class="form-control" id="signupPoliceStation" required>
+
+                <label for="signupPoliceId" class="form-label mt-3">Police ID Number</label>
+                <input type="text" class="form-control" id="signupPoliceId" required>
+              </div>
+
+              <div class="d-grid mb-3">
+                <button type="submit" class="btn btn-success py-2" id="submitBtn">Sign Up</button>
+              </div>
+              <div class="text-center">
+                <a href="signin.html" class="toggle-link">Already have an account? Sign In</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade verification-modal" id="verificationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Account Verification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="verificationMessage"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    sendEmailVerification
+  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+  import {
+    getFirestore,
+    doc,
+    setDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBxc2hgvEXwSWJexgECSX4ohbPWfTEFcxU",
+    authDomain: "swayam-surakasha.firebaseapp.com",
+    projectId: "swayam-surakasha",
+    storageBucket: "swayam-surakasha.appspot.com",
+    messagingSenderId: "906502359189",
+    appId: "1:906502359189:web:8b737c144ebcd2d650339c",
+    measurementId: "G-2KT69QEK5X"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  document.getElementById('signupUserType').addEventListener('change', function() {
+  const policeFields = document.getElementById('policeFields');
+  const isPolice = this.value === 'police';
+  policeFields.classList.toggle('d-none', !isPolice);
+
+  // Dynamically toggle required attributes
+  document.getElementById('signupPoliceStation').required = isPolice;
+  document.getElementById('signupPoliceId').required = isPolice;
+});
+
+  document.getElementById('formSignup').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
+
+    try {
+      const role = document.getElementById('signupUserType').value;
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value;
+
+      if (!email || !password) throw new Error('Please fill in all required fields');
+      if (password.length < 6) throw new Error('Password must be at least 6 characters');
+
+      let policeStation = '';
+      let policeId = '';
+      if (role === 'police') {
+        policeStation = document.getElementById('signupPoliceStation').value.trim();
+        policeId = document.getElementById('signupPoliceId').value.trim();
+
+        if (!policeStation || !policeId) throw new Error('Please enter all police details');
+      }
+
+      // Create user account
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+      const uid = userCred.user.uid;
+
+      // Store user data in Firestore
+      const userData = {
+        email,
+        role,
+        createdAt: serverTimestamp(),
+        status: role === 'police' ? 'pending' : 'active'
+      };
+
+      if (role === 'police') {
+        userData.policeStation = policeStation;
+        userData.policeId = policeId;
+      }
+
+      await setDoc(doc(db, 'users', uid), userData);
+      
+      // Send email verification
+      await sendEmailVerification(userCred.user);
+
+      // Show appropriate message based on user type
+      const verificationModal = new bootstrap.Modal(document.getElementById('verificationModal'));
+      const messageElement = document.getElementById('verificationMessage');
+      
+      if (role === 'police') {
+        messageElement.innerHTML = `
+          <p>Your police account has been submitted for verification.</p>
+          <p>You will receive an email notification once your account is approved by the administration.</p>
+          <p>Until then, you won't be able to access the police dashboard.</p>
+        `;
+      } else {
+        messageElement.innerHTML = `
+          <p>Your account has been created successfully!</p>
+          <p>We've sent a verification email to <strong>${email}</strong>.</p>
+          <p>Please verify your email address to complete your registration.</p>
+        `;
+      }
+
+      verificationModal.show();
+      
+      // When modal is closed, redirect to sign-in page
+      document.getElementById('verificationModal').addEventListener('hidden.bs.modal', function () {
+        window.location.href = 'signin.html';
+      });
+
+    } catch (error) {
+      console.error('Signup error:', error);
+      let errorMessage = "Signup failed. Please try again.";
+      if (error.code) {
+        switch(error.code) {
+          case 'auth/email-already-in-use': errorMessage = "This email is already registered."; break;
+          case 'auth/weak-password': errorMessage = "Password should be at least 6 characters."; break;
+          case 'auth/invalid-email': errorMessage = "Please enter a valid email address."; break;
+        }
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+      alert(errorMessage);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Sign Up';
+    }
+  });
+</script>
+</body>
+</html>
